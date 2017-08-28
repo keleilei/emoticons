@@ -1,3 +1,12 @@
+# webpack
+dist/
+
+# node
+node_modules/
+
+# new npm version
+package-lock.json
+
 *.class
 target
 

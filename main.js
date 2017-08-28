@@ -14,9 +14,7 @@ electron.app.once('ready', function () {
         height: 500,
         // Don't show the window until it ready, this prevents any white flickering
         show: false,
-        // Don't allow the window to be resized.
-        resizable: false,
-    })
+    });
 
     // Load a URL in the window to the local index.html path
     window.loadURL(url.format({

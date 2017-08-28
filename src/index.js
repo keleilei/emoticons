@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {Input, Button} from 'antd';
+
 class TodoApp extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = { items: [], text: '' };
+        this.state = {items: [], text: ''};
     }
 
     render() {
@@ -18,13 +20,17 @@ class TodoApp extends React.Component {
                 null,
                 'TODO'
             ),
-            React.createElement(TodoList, { items: this.state.items }),
+            React.createElement(TodoList, {items: this.state.items}),
             React.createElement(
                 'form',
-                { onSubmit: this.handleSubmit },
-                React.createElement('input', { onChange: this.handleChange, value: this.state.text }),
+                {onSubmit: this.handleSubmit},
+                React.createElement(Input, {
+                    onChange: this.handleChange,
+                    value: this.state.text,
+                    placeholder: "Input size is small"
+                }),
                 React.createElement(
-                    'button',
+                    Button,
                     null,
                     'Add #' + (this.state.items.length + 1)
                 )
@@ -33,7 +39,7 @@ class TodoApp extends React.Component {
     }
 
     handleChange(e) {
-        this.setState({ text: e.target.value });
+        this.setState({text: e.target.value});
     }
 
     handleSubmit(e) {
@@ -56,7 +62,7 @@ class TodoList extends React.Component {
             null,
             this.props.items.map(item => React.createElement(
                 'li',
-                { key: item.id },
+                {key: item.id},
                 item.text
             ))
         );
