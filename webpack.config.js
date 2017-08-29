@@ -7,6 +7,11 @@ module.exports = {
         filename: "bundle.js",
         path: path.resolve(__dirname, 'dist')
     },
+    resolve: {
+        alias:{
+            components: path.resolve(__dirname, 'src/components')
+        }
+    },
     module: {
         rules: [
             {
@@ -16,11 +21,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' }
-                ],
-                include: /node_modules/
+                use: [ 'style-loader', 'css-loader' ]
             },
         ]
     }

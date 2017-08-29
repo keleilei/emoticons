@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "prestart": "webpack",
+    "prestart": "webpack --display-error-details",
     "start": "electron ."
   },
   "repository": {
