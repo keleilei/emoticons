@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Input, Button} from 'antd';
+import {Input, Button, Card} from 'antd';
 
 class TodoApp extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ class TodoApp extends React.Component {
                 React.createElement(Input, {
                     onChange: this.handleChange,
                     value: this.state.text,
+                    style: {width: 140},
                     placeholder: "Input size is small"
                 }),
                 React.createElement(
@@ -46,7 +47,8 @@ class TodoApp extends React.Component {
         e.preventDefault();
         var newItem = {
             text: this.state.text,
-            id: Date.now()
+            date: new Date(),
+            id: Date.now(),
         };
         this.setState(prevState => ({
             items: prevState.items.concat(newItem),
@@ -57,6 +59,7 @@ class TodoApp extends React.Component {
 
 class TodoList extends React.Component {
     render() {
+        /*
         return React.createElement(
             'ul',
             null,
@@ -65,7 +68,16 @@ class TodoList extends React.Component {
                 {key: item.id},
                 item.text
             ))
-        );
+        );*/
+        let ret = this.props.items.map(item => {
+            return <div style={{background: '#ECECEC', padding: '10px'}} key={item.id}>
+                <Card title="2Do" bordered={false} style={{width: 300}}>
+                    <p>{item.text}</p>
+                    <p>{item.date.toLocaleTimeString()}</p>
+                </Card>
+            </div>
+        });
+        return React.createElement('div', null, ret);
     }
 }
 

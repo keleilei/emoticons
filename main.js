@@ -11,7 +11,7 @@ electron.app.once('ready', function () {
         // Set the initial width to 400px
         width: 1500,
         // Set the initial height to 500px
-        height: 800,
+        height: 600,
         // Don't show the window until it ready, this prevents any white flickering
         show: false,
     });
